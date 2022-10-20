@@ -173,6 +173,16 @@ function grabCustomValues() {
   return newPoster;
 };
 
+function pushCustomValues() {
+  var url = document.querySelector(".poster-image-url").value;
+  var word = document.querySelector(".poster-title").value;
+  var quote = document.querySelector(".poster-quote").value;
+
+  images.push(url);
+  titles.push(word);
+  quotes.push(quote);
+};
+
  document.onload = displayRandomPoster();
 
 
