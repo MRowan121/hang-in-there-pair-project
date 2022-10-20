@@ -7,6 +7,14 @@ var quotePathway = document.querySelector(".poster-quote");
 
 var randomButton = document.querySelector(".show-random");
 
+var makeButton = document.querySelector(".show-form");
+
+var mainPage = document.querySelector(".main-poster");
+
+var formPage = document.querySelector(".poster-form");
+
+var savedPage = document.querySelector(".saved-posters");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,7 +118,7 @@ var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener("click", displayRandomPoster);
-
+makeButton.addEventListener("click", changeViews);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -134,6 +142,11 @@ function getRandomQuotes() {
   imagePathway.src= getRandomImages();
   titlePathway.innerText = getRandomTitle();
   quotePathway.innerText = getRandomQuotes();
+ };
+
+ function changeViews() {
+  formPage.classList.toggle("hidden");
+  mainPage.classList.toggle("hidden");
  };
 
  document.onload = displayRandomPoster();
