@@ -163,4 +163,21 @@ function getRandomQuotes() {
   mainPage.classList.toggle("hidden");
  };
 
+function grabCustomValues() {
+  var url = document.querySelector(".poster-image-url").value;
+  var word = document.querySelector(".poster-title").value;
+  var quote = document.querySelector(".poster-quote").value;
+
+  var newPoster = new Poster(url, word, quote);
+
+  return newPoster;
+};
+
  document.onload = displayRandomPoster();
+
+
+ // User should be able to fill out all three inputs
+ // Clicking "Show My Poster" should do the following:
+    // Use the values from the inputs to create a new instance of our Poster class
+    // Save the inputs into the respective arrays (this will allow them to appear as a part of the random poster functionality)
+    // Display the poster that was created via inputs
