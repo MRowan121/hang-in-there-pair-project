@@ -7,6 +7,20 @@ var quotePathway = document.querySelector(".poster-quote");
 
 var randomButton = document.querySelector(".show-random");
 
+var showMakeButton = document.querySelector(".show-form");
+
+var showSavedButton = document.querySelector(".show-saved");
+
+var backMainButton = document.querySelector(".back-to-main");
+
+var takeBackButton = document.querySelector(".show-main")
+
+var mainPage = document.querySelector(".main-poster");
+
+var formPage = document.querySelector(".poster-form");
+
+var savedPage = document.querySelector(".saved-posters");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,7 +124,10 @@ var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener("click", displayRandomPoster);
-
+showMakeButton.addEventListener("click", changeFormsMain);
+showSavedButton.addEventListener("click", changeMainSaved);
+backMainButton.addEventListener("click", changeMainSaved);
+takeBackButton.addEventListener("click", changeFormsMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -134,6 +151,16 @@ function getRandomQuotes() {
   imagePathway.src= getRandomImages();
   titlePathway.innerText = getRandomTitle();
   quotePathway.innerText = getRandomQuotes();
+ };
+
+ function changeFormsMain() {
+  formPage.classList.toggle("hidden");
+  mainPage.classList.toggle("hidden");
+ };
+
+ function changeMainSaved() {
+  savedPage.classList.toggle("hidden");
+  mainPage.classList.toggle("hidden");
  };
 
  document.onload = displayRandomPoster();
