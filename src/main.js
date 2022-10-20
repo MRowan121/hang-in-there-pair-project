@@ -11,6 +11,10 @@ var showMakeButton = document.querySelector(".show-form");
 
 var showSavedButton = document.querySelector(".show-saved");
 
+var backMainButton = document.querySelector(".back-to-main");
+
+var takeBackButton = document.querySelector(".show-main")
+
 var mainPage = document.querySelector(".main-poster");
 
 var formPage = document.querySelector(".poster-form");
@@ -122,6 +126,8 @@ var currentPoster;
 randomButton.addEventListener("click", displayRandomPoster);
 showMakeButton.addEventListener("click", changeFormsMain);
 showSavedButton.addEventListener("click", changeMainSaved);
+backMainButton.addEventListener("click", changeMainSaved);
+takeBackButton.addEventListener("click", changeFormsMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
