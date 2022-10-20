@@ -21,6 +21,8 @@ var formPage = document.querySelector(".poster-form");
 
 var savedPage = document.querySelector(".saved-posters");
 
+var showNewPoster = document.querySelector(".make-poster");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -128,6 +130,11 @@ showMakeButton.addEventListener("click", changeFormsMain);
 showSavedButton.addEventListener("click", changeMainSaved);
 backMainButton.addEventListener("click", changeMainSaved);
 takeBackButton.addEventListener("click", changeFormsMain);
+showNewPoster.addEventListener("click", function() {
+  changeFormsMain();
+  pushCustomValues();
+  displayCustomPoster();
+});
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -162,5 +169,27 @@ function getRandomQuotes() {
   savedPage.classList.toggle("hidden");
   mainPage.classList.toggle("hidden");
  };
+
+function pushCustomValues() {
+  showNewPoster.setAttribute("type", "button");
+  images.push(document.getElementById("poster-image-url").value);
+  titles.push(document.getElementById("poster-title").value);
+  quotes.push(document.getElementById("poster-quote").value);
+};
+
+function grabCustomValues() {
+  var url = document.getElementById("poster-image-url").value;
+  var word = document.getElementById("poster-title").value;
+  var quote = document.getElementById("poster-quote").value;
+
+  return new Poster(url, word, quote);
+};
+
+function displayCustomPoster() {
+  var currentPoster = grabCustomValues();
+  imagePathway.src= currentPoster.imageURL;
+  titlePathway.innerText = currentPoster.title;
+  quotePathway.innerText = currentPoster.quote;
+};
 
  document.onload = displayRandomPoster();
