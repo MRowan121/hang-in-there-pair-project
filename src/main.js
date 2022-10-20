@@ -7,7 +7,9 @@ var quotePathway = document.querySelector(".poster-quote");
 
 var randomButton = document.querySelector(".show-random");
 
-var makeButton = document.querySelector(".show-form");
+var showMakeButton = document.querySelector(".show-form");
+
+var showSavedButton = document.querySelector(".show-saved");
 
 var mainPage = document.querySelector(".main-poster");
 
@@ -118,7 +120,8 @@ var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener("click", displayRandomPoster);
-makeButton.addEventListener("click", changeViews);
+showMakeButton.addEventListener("click", changeFormsMain);
+showSavedButton.addEventListener("click", changeMainSaved);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -144,8 +147,13 @@ function getRandomQuotes() {
   quotePathway.innerText = getRandomQuotes();
  };
 
- function changeViews() {
+ function changeFormsMain() {
   formPage.classList.toggle("hidden");
+  mainPage.classList.toggle("hidden");
+ };
+
+ function changeMainSaved() {
+  savedPage.classList.toggle("hidden");
   mainPage.classList.toggle("hidden");
  };
 
