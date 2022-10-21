@@ -205,6 +205,27 @@ function getCurrentPoster() {
 function savePoster() {
   var currentPoster = getCurrentPoster();
   savedPosters.push(currentPoster);
-};
+}
 
- document.onload = displayRandomPoster();
+
+// For loop, loop over the savedPosters array
+// For each object in the array, check if url,word,quote === url,word,quote, return ( .includes() )
+// if (object.imageURL.includes(currentURL) && object.title.includes(currentTitle) && object.quote.includes(currentQuote)) {return}
+// (object.imageURL.includes(currentURL) && object.title.includes(currentTitle) && object.quote.includes(currentQuote))
+
+// function savePoster() {
+//   // var currentPoster = getCurrentPoster();
+//   // var currentValues = Object.values(currentPoster);
+//   // currentValues.splice(0, 1);
+//   // for (var i = 0; i < savedPosters.length; i++) {
+//   //   var savedValues = Object.values(savedPosters[i]);
+//   //   savedValues.splice(0, 1);
+//   //   if (currentValues === savedValues) {
+//   //     return;
+//   //   } else {
+//   //     savedPosters.push(currentPoster);
+//   //   }
+//   // }
+// };
+
+document.onload = displayRandomPoster();
