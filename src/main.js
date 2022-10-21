@@ -23,6 +23,8 @@ var savedPage = document.querySelector(".saved-posters");
 
 var showNewPoster = document.querySelector(".make-poster");
 
+var savePosterButton = document.querySelector(".save-poster");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -122,7 +124,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+// var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener("click", displayRandomPoster);
@@ -135,6 +137,7 @@ showNewPoster.addEventListener("click", function() {
   pushCustomValues();
   displayCustomPoster();
 });
+savePosterButton.addEventListener("click", savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -190,6 +193,18 @@ function displayCustomPoster() {
   imagePathway.src= currentPoster.imageURL;
   titlePathway.innerText = currentPoster.title;
   quotePathway.innerText = currentPoster.quote;
+};
+
+function getCurrentPoster() {
+  var url = imagePathway.src;
+  var word = titlePathway.innerText;
+  var quote = quotePathway.innerText;
+  return new Poster(url, word, quote);
+};
+
+function savePoster() {
+  var currentPoster = getCurrentPoster();
+  savedPosters.push(currentPoster);
 };
 
  document.onload = displayRandomPoster();
