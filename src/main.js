@@ -25,6 +25,8 @@ var showNewPoster = document.querySelector(".make-poster");
 
 var savePosterButton = document.querySelector(".save-poster");
 
+var container = document.querySelector(".saved-posters-grid");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -137,7 +139,7 @@ showNewPoster.addEventListener("click", function() {
   changeFormsMain();
   grabCustomValues();
 });
-savePosterButton.addEventListener("click", savePoster);
+savePosterButton.addEventListener("click",  savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -185,7 +187,16 @@ function displayCustomPoster() {
 function savePoster() {
  if (!savedPosters.includes(currentPoster)) {
   savedPosters.push(currentPoster);
+  createMiniPosters();
   };
+};
+
+function createMiniPosters() {
+  container.innerHTML += `<div class="mini-poster">
+    <img src="${currentPoster.imageURL}"/>
+    <h2>${currentPoster.title}</h2>
+    <h4>${currentPoster.quote}</h4>
+  </div>`
 };
 
 document.onload = displayRandomPoster();
