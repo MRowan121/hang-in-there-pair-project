@@ -124,7 +124,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-// var currentPoster;
+var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener("click", displayRandomPoster);
@@ -133,9 +133,9 @@ showSavedButton.addEventListener("click", changeMainSaved);
 backMainButton.addEventListener("click", changeMainSaved);
 takeBackButton.addEventListener("click", changeFormsMain);
 showNewPoster.addEventListener("click", function() {
+  showNewPoster.setAttribute("type", "button");
   changeFormsMain();
-  pushCustomValues();
-  displayCustomPoster();
+  grabCustomValues();
 });
 savePosterButton.addEventListener("click", savePoster);
 
@@ -145,22 +145,12 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function getRandomImages() {
-  return images[getRandomIndex(images)];
-};
-
-function getRandomTitle() {
-  return titles[getRandomIndex(titles)].toUpperCase();
-};
-
-function getRandomQuotes() {
-  return quotes[getRandomIndex(quotes)];
-};
-
  function displayRandomPoster() {
-  imagePathway.src= getRandomImages();
-  titlePathway.innerText = getRandomTitle();
-  quotePathway.innerText = getRandomQuotes();
+  var randImgIndex = getRandomIndex(images);
+  var randTitleIndex = getRandomIndex(titles);
+  var randQuoteIndex = getRandomIndex(quotes);
+  currentPoster = new Poster(images[randImgIndex], titles[randTitleIndex], quotes[randQuoteIndex]);
+  displayCustomPoster();
  };
 
  function changeFormsMain() {
@@ -173,59 +163,29 @@ function getRandomQuotes() {
   mainPage.classList.toggle("hidden");
  };
 
-function pushCustomValues() {
-  showNewPoster.setAttribute("type", "button");
-  images.push(document.getElementById("poster-image-url").value);
-  titles.push(document.getElementById("poster-title").value);
-  quotes.push(document.getElementById("poster-quote").value);
-};
-
 function grabCustomValues() {
   var url = document.getElementById("poster-image-url").value;
   var word = document.getElementById("poster-title").value;
   var quote = document.getElementById("poster-quote").value;
-
-  return new Poster(url, word, quote);
+  images.push(url);
+  titles.push(word);
+  quotes.push(quote);
+  
+  currentPoster = new Poster(url, word, quote);
+  console.log(currentPoster);
+  displayCustomPoster();
 };
 
 function displayCustomPoster() {
-  var currentPoster = grabCustomValues();
   imagePathway.src= currentPoster.imageURL;
   titlePathway.innerText = currentPoster.title;
   quotePathway.innerText = currentPoster.quote;
 };
 
-function getCurrentPoster() {
-  var url = imagePathway.src;
-  var word = titlePathway.innerText;
-  var quote = quotePathway.innerText;
-  return new Poster(url, word, quote);
-};
-
 function savePoster() {
-  var currentPoster = getCurrentPoster();
+ if (!savedPosters.includes(currentPoster)) {
   savedPosters.push(currentPoster);
-}
-
-
-// For loop, loop over the savedPosters array
-// For each object in the array, check if url,word,quote === url,word,quote, return ( .includes() )
-// if (object.imageURL.includes(currentURL) && object.title.includes(currentTitle) && object.quote.includes(currentQuote)) {return}
-// (object.imageURL.includes(currentURL) && object.title.includes(currentTitle) && object.quote.includes(currentQuote))
-
-// function savePoster() {
-//   // var currentPoster = getCurrentPoster();
-//   // var currentValues = Object.values(currentPoster);
-//   // currentValues.splice(0, 1);
-//   // for (var i = 0; i < savedPosters.length; i++) {
-//   //   var savedValues = Object.values(savedPosters[i]);
-//   //   savedValues.splice(0, 1);
-//   //   if (currentValues === savedValues) {
-//   //     return;
-//   //   } else {
-//   //     savedPosters.push(currentPoster);
-//   //   }
-//   // }
-// };
+  };
+};
 
 document.onload = displayRandomPoster();
