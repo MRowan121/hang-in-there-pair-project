@@ -1,4 +1,3 @@
-// query selector variables go here 👇
 var imagePathway = document.querySelector(".poster-img");
 var titlePathway = document.querySelector(".poster-title");
 var quotePathway = document.querySelector(".poster-quote");
@@ -14,7 +13,6 @@ var showNewPoster = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster");
 var container = document.querySelector(".saved-posters-grid");
 
-// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -116,7 +114,6 @@ var savedPosters = [];
 var currentPoster;
 var miniPosters;
 
-// event listeners go here 👇
 randomButton.addEventListener("click", displayRandomPoster);
 showMakeButton.addEventListener("click", changeFormsMain);
 showSavedButton.addEventListener("click", changeMainSaved);
@@ -129,8 +126,6 @@ showNewPoster.addEventListener("click", function() {
 });
 savePosterButton.addEventListener("click",  savePoster);
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
